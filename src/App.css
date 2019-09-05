@@ -1,27 +1,11 @@
 .App {
   text-align: center;
+  height: 1000px;
+  width: 800px;
+  margin: auto;
+  padding-top: 30px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -30,4 +14,30 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Grid {
+  display: Grid;
+  Grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+  Grid-auto-rows: 1fr;
+}
+
+.Grid::before {
+  content: '';
+  width: 0;
+  padding-bottom: 100%;
+  Grid-row: 1 / 1;
+  Grid-column: 1 / 1;
+}
+
+.Grid > *:first-child {
+  Grid-row: 1 / 1;
+  Grid-column: 1 / 1;
+}
+
+/* Just to make the Grid visible */
+
+.Grid > * {
+  background: rgba(0,0,0,0.1);
+  border: 1px white solid;
 }
