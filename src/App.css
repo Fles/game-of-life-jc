@@ -41,10 +41,10 @@
   border: 1px white solid;
 }
 
-.Cell {
+.Grid div {
   background: lightgray;
 }
 
-.Cell.alive {
+.Grid div.alive {
   background: white;
 }
