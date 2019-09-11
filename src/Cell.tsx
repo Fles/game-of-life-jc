@@ -3,8 +3,14 @@ import React from "react";
 export interface CellProps {
   className?: string;
   isAlive: boolean;
+  key: any;
+  posx: number;
+  posy: number;
 }
 
 export const Cell = (props: CellProps) => (
-  <div className={`${props.isAlive ? "alive" : ""}`} />
+  <div
+    onClick={() => console.log(props)}
+    className={`${props.isAlive ? "alive" : ""}`}
+  />
 );
