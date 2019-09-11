@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Cell } from "./Cell";
 
-function Grid() {
+
+export interface GridProps {
+  shouldStartRender: boolean
+}
+
+export const Grid = (props: GridProps) => {
+
   const initMatrix = (size: number) =>
     Array(size)
       .fill(null)
@@ -31,7 +37,7 @@ function Grid() {
   fakeMatrix[14][22] = 1;
   fakeMatrix[15][23] = 1;
   fakeMatrix[15][26] = 1;
-  // I know :)
+  // I know
 
   const [matrix, setMatrix] = useState(fakeMatrix);
 
@@ -72,14 +78,14 @@ function Grid() {
   );
 
   const testCell = (x: number, y: number, currentVal: number) => {
-    let liveNeighbors = countLiveCells(x, y);
+    let liveNeibhors = countLiveCells(x, y);
     if (currentVal === 1) {
-      if (liveNeighbors < 2 || liveNeighbors > 3) {
+      if (liveNeibhors < 2 || liveNeibhors > 3) {
         return 0;
       }
       return 1;
     } else if (currentVal === 0) {
-      if (liveNeighbors === 3) {
+      if (liveNeibhors === 3) {
         return 1;
       }
       return 0;
@@ -97,8 +103,11 @@ function Grid() {
   };
 
   useEffect(() => {
-    renderGrid();
+    if (props.shouldStartRender) {
+      renderGrid()
+    }
   });
+
 
   return <div className="Grid">{cells}</div>;
 }
