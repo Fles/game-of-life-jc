@@ -72,14 +72,14 @@ function Grid() {
   );
 
   const testCell = (x: number, y: number, currentVal: number) => {
-    let liveNeibhors = countLiveCells(x, y);
+    let liveNeighbors = countLiveCells(x, y);
     if (currentVal === 1) {
-      if (liveNeibhors < 2 || liveNeibhors > 3) {
+      if (liveNeighbors < 2 || liveNeighbors > 3) {
         return 0;
       }
       return 1;
     } else if (currentVal === 0) {
-      if (liveNeibhors === 3) {
+      if (liveNeighbors === 3) {
         return 1;
       }
       return 0;
