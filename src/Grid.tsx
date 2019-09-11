@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Cell } from "./Cell";
 
-
 export interface GridProps {
-  shouldStartRender: boolean
+  shouldStartRender: boolean;
 }
 
 export const Grid = (props: GridProps) => {
-
-  const initMatrix = (size: number) =>
+  const initGrid = (size: number) =>
     Array(size)
       .fill(null)
       .map(() =>
@@ -17,56 +15,27 @@ export const Grid = (props: GridProps) => {
           .map(() => 0)
       );
 
-  let fakeMatrix = initMatrix(50);
-  fakeMatrix[2][4] = 1;
-  fakeMatrix[3][5] = 1;
-  fakeMatrix[4][3] = 1;
-  fakeMatrix[4][4] = 1;
-  fakeMatrix[4][5] = 1;
-  fakeMatrix[14][25] = 1;
-  fakeMatrix[14][26] = 1;
-  fakeMatrix[14][27] = 1;
-  fakeMatrix[13][22] = 1;
-  fakeMatrix[13][23] = 1;
-  fakeMatrix[13][24] = 1;
-  fakeMatrix[13][25] = 1;
-  fakeMatrix[14][26] = 1;
-  fakeMatrix[14][27] = 1;
-  fakeMatrix[14][28] = 1;
-  fakeMatrix[14][29] = 1;
-  fakeMatrix[14][22] = 1;
-  fakeMatrix[15][23] = 1;
-  fakeMatrix[15][26] = 1;
-  // I know
+  let fakeGrid = initGrid(50);
+  fakeGrid[2][2] = 1;
+  fakeGrid[2][3] = 1;
+  fakeGrid[2][4] = 1;
 
-  const [matrix, setMatrix] = useState(fakeMatrix);
+  const [grid, setGrid] = useState(fakeGrid);
 
   const countLiveCells = (x: number, y: number): number => {
-    const tL = matrix[x - 1] ? (matrix[y - 1] ? matrix[x - 1][y - 1] : 0) : 0;
-    const tM = matrix[x - 1] ? matrix[x - 1][y] : 0;
-    const tR = matrix[x - 1]
-      ? matrix[x - 1][y + 1]
-        ? matrix[x - 1][y + 1]
-        : 0
-      : 0;
-    const mL = matrix[x][y - 1] ? matrix[x][y - 1] : 0;
-    const mR = matrix[x][y + 1] ? matrix[x][y + 1] : 0;
-    const bL = matrix[x + 1]
-      ? matrix[x + 1][y - 1]
-        ? matrix[x + 1][y - 1]
-        : 0
-      : 0;
-    const bM = matrix[x + 1] ? matrix[x + 1][y] : 0;
-    const bR = matrix[x + 1]
-      ? matrix[x + 1][y + 1]
-        ? matrix[x + 1][y + 1]
-        : 0
-      : 0;
+    const tL = grid[x - 1] ? (grid[y - 1] ? grid[x - 1][y - 1] : 0) : 0;
+    const tM = grid[x - 1] ? grid[x - 1][y] : 0;
+    const tR = grid[x - 1] ? (grid[x - 1][y + 1] ? grid[x - 1][y + 1] : 0) : 0;
+    const mL = grid[x][y - 1] ? grid[x][y - 1] : 0;
+    const mR = grid[x][y + 1] ? grid[x][y + 1] : 0;
+    const bL = grid[x + 1] ? (grid[x + 1][y - 1] ? grid[x + 1][y - 1] : 0) : 0;
+    const bM = grid[x + 1] ? grid[x + 1][y] : 0;
+    const bR = grid[x + 1] ? (grid[x + 1][y + 1] ? grid[x + 1][y + 1] : 0) : 0;
 
     return tL + tM + tR + mL + mR + bL + bM + bR;
   };
 
-  const cells = matrix.map((row: number[], rowIndex: number) =>
+  const cells = grid.map((row: number[], rowIndex: number) =>
     row.map((col: number, colIndex: number) => (
       <Cell
         isAlive={!!col}
@@ -94,21 +63,20 @@ export const Grid = (props: GridProps) => {
   };
 
   const renderGrid = () => {
-    let matrixNext = matrix.map((row: number[], row_index: number) =>
+    let matrixNext = grid.map((row: number[], row_index: number) =>
       row.map((currentVal: number, cell_index: number) =>
         testCell(row_index, cell_index, currentVal)
       )
     );
-    setMatrix(() => [...matrixNext]);
+    setGrid(() => [...matrixNext]);
   };
 
   useEffect(() => {
     if (props.shouldStartRender) {
-      renderGrid()
+      renderGrid();
     }
   });
 
-
   return <div className="Grid">{cells}</div>;
-}
+};
 export default Grid;
