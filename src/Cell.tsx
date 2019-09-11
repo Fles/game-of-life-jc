@@ -6,11 +6,9 @@ export interface CellProps {
   key: any;
   posx: number;
   posy: number;
+  onUpdate: () => void
 }
 
 export const Cell = (props: CellProps) => (
-  <div
-    onClick={() => console.log(props)}
-    className={`${props.isAlive ? "alive" : ""}`}
-  />
+  <div className={`${props.isAlive ? "alive" : ""}`} onClick={props.onUpdate}/>
 );

@@ -16,9 +16,6 @@ export const Grid = (props: GridProps) => {
       );
 
   let fakeGrid = initGrid(50);
-  fakeGrid[2][2] = 1;
-  fakeGrid[2][3] = 1;
-  fakeGrid[2][4] = 1;
 
   const [grid, setGrid] = useState(fakeGrid);
 
@@ -42,6 +39,9 @@ export const Grid = (props: GridProps) => {
         key={`${rowIndex}${colIndex}`}
         posx={rowIndex}
         posy={colIndex}
+        onUpdate={() => {
+          fakeGrid[rowIndex][colIndex] = col === 1 ? 0 : 1;
+        }}
       />
     ))
   );
