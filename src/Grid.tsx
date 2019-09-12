@@ -73,8 +73,11 @@ export const Grid = (props: GridProps) => {
   };
 
   useEffect(() => {
+    
     if (props.shouldStartRender) {
       renderGrid();
+    } else {
+      window.history.pushState('pattern', 'Title', '/#/' + JSON.stringify(grid));
     }
   });
 
