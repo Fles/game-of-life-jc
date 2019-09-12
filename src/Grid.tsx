@@ -13,10 +13,13 @@ const initGrid = (size: number) =>
         .fill(null)
         .map(() => 0)
     );
+
+const fromUrlGrid = JSON.parse(window.location.hash.substr(1));
+
 let emptyGrid = initGrid(50);
 
 export const Grid = (props: GridProps) => {
-  const [grid, setGrid] = useState(emptyGrid);
+  const [grid, setGrid] = useState(fromUrlGrid || emptyGrid);
 
   const countLiveCells = (x: number, y: number): number => {
     const tL = grid[x - 1] ? (grid[y - 1] ? grid[x - 1][y - 1] : 0) : 0;
@@ -39,7 +42,7 @@ export const Grid = (props: GridProps) => {
         posx={rowIndex}
         posy={colIndex}
         onUpdate={() => {
-          const nextGrid = [...grid.map(row => [...row])];
+          const nextGrid = [...grid.map((row: any) => [...row])];
           nextGrid[rowIndex][colIndex] = col === 1 ? 0 : 1;
           setGrid(nextGrid);
         }}
@@ -73,11 +76,10 @@ export const Grid = (props: GridProps) => {
   };
 
   useEffect(() => {
-    
     if (props.shouldStartRender) {
       renderGrid();
     } else {
-      window.history.pushState('pattern', 'Title', '/#/' + JSON.stringify(grid));
+      window.history.pushState("pattern", "Title", "/#" + JSON.stringify(grid));
     }
   });
 
