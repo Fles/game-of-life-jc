@@ -43,6 +43,7 @@
 
 .Grid div {
   background: lightgray;
+  cursor: pointer;
 }
 
 .Grid div.alive {
