@@ -5,7 +5,6 @@ import "./App.css";
 
 function App() {
   const [renderImage, setRenderImage] = useState(0);
-  console.log(renderImage);
   return (
     <div className="App">
       <Grid shouldStartRender={renderImage > 0} />

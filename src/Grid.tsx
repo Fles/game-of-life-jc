@@ -5,19 +5,18 @@ export interface GridProps {
   shouldStartRender: boolean;
 }
 
+const initGrid = (size: number) =>
+  Array(size)
+    .fill(null)
+    .map(() =>
+      Array(size)
+        .fill(null)
+        .map(() => 0)
+    );
+let emptyGrid = initGrid(50);
+
 export const Grid = (props: GridProps) => {
-  const initGrid = (size: number) =>
-    Array(size)
-      .fill(null)
-      .map(() =>
-        Array(size)
-          .fill(null)
-          .map(() => 0)
-      );
-
-  let fakeGrid = initGrid(50);
-
-  const [grid, setGrid] = useState(fakeGrid);
+  const [grid, setGrid] = useState(emptyGrid);
 
   const countLiveCells = (x: number, y: number): number => {
     const tL = grid[x - 1] ? (grid[y - 1] ? grid[x - 1][y - 1] : 0) : 0;
@@ -40,7 +39,9 @@ export const Grid = (props: GridProps) => {
         posx={rowIndex}
         posy={colIndex}
         onUpdate={() => {
-          fakeGrid[rowIndex][colIndex] = col === 1 ? 0 : 1;
+          const nextGrid = [...grid.map(row => [...row])];
+          nextGrid[rowIndex][colIndex] = col === 1 ? 0 : 1;
+          setGrid(nextGrid);
         }}
       />
     ))
@@ -68,7 +69,7 @@ export const Grid = (props: GridProps) => {
         testCell(row_index, cell_index, currentVal)
       )
     );
-    setGrid(() => [...matrixNext]);
+    setGrid(matrixNext);
   };
 
   useEffect(() => {
