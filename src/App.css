@@ -1,9 +1,13 @@
 .App {
-  text-align: center;
+  
   height: 1000px;
   width: 800px;
   margin: auto;
-  padding-top: 30px;
+  padding-top: 0px;
+}
+
+.App button {
+  margin: 5px;
 }
 
 @keyframes App-logo-spin {
