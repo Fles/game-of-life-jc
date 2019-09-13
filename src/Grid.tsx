@@ -63,7 +63,13 @@ export const Grid = (props: GridProps) => {
 
   useEffect(() => {
     if (props.shouldStartRender) {
-      renderGrid();
+
+      const timer = setTimeout(() => {
+        renderGrid()
+      }, 42);
+      return () => clearTimeout(timer);
+
+      
     }
   });
 
