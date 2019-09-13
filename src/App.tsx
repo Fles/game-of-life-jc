@@ -7,7 +7,7 @@ function App() {
   const [renderImage, setRenderImage] = useState(0);
 
   useEffect(() => {
-    window.history.pushState("pattern", "Title", "/#" + JSON.stringify([]));
+    
   })
   return (
     <div className="App">

@@ -1,4 +1,3 @@
-
 export const initGrid = (size: number) =>
   Array(size)
     .fill(null)
@@ -11,15 +10,13 @@ export const initGrid = (size: number) =>
 export const updateUrlHash = (row: number, col: number, live: boolean) => {
   let hash = JSON.parse(window.location.hash.substring(1));
   if (!live) {
+    // TODO: check if there is a hasih in, do not add it again
     hash = [...hash, ...[[row, col]]];
   } else {
-    let index = undefined;
-    hash.forEach((h: any, i: number) => {
-      if (h[0] === row && h[1] === col) {
-        index = i;
-      }
-    });
-    hash.splice(index, 1);
+    var filtered = [...hash].filter((element: string) => 
+         JSON.stringify(element) !== JSON.stringify([row, col])
+    ); 
+    hash = [...filtered]
   }
   window.history.replaceState("pattern", "Title", "/#" + JSON.stringify(hash));
 };

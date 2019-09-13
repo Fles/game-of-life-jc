@@ -64,6 +64,9 @@ export const Grid = (props: GridProps) => {
   );
 
   useEffect(() => {
+    if (!window.location.hash) {
+      window.history.pushState("pattern", "Title", "/#" + JSON.stringify([]));
+    }
     if (props.shouldStartRender) {
       renderGrid();
     } else {
