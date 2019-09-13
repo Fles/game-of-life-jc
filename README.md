@@ -1,4 +1,4 @@
-Inspired by [John Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) [>](https://build-jarerqrfqp.now.sh/#[])
+Inspired by [John Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) [>](https://build-hvrsc5g5g.now.sh/)
 
 ## Available Scripts
 
