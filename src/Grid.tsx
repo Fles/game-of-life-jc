@@ -5,14 +5,14 @@ import { GridProps } from "./types";
 
 let emptyGrid = initGrid(50);
 const updates = readFromUrlHash();
-
-updates.forEach((update: number[]) => {
-  emptyGrid[update[0]][update[1]] = 1;
+updates.forEach((update: string) => {
+  const row = +update.split(".")[0];
+  const col = +update.split(".")[1];
+  emptyGrid[row][col] = 1;
 });
 
 export const Grid = (props: GridProps) => {
   const [grid, setGrid] = useState(emptyGrid);
-
   const countLiveCells = (x: number, y: number): number => {
     const tL = grid[x - 1] ? (grid[y - 1] ? grid[x - 1][y - 1] : 0) : 0;
     const tM = grid[x - 1] ? grid[x - 1][y] : 0;
@@ -22,22 +22,15 @@ export const Grid = (props: GridProps) => {
     const bL = grid[x + 1] ? (grid[x + 1][y - 1] ? grid[x + 1][y - 1] : 0) : 0;
     const bM = grid[x + 1] ? grid[x + 1][y] : 0;
     const bR = grid[x + 1] ? (grid[x + 1][y + 1] ? grid[x + 1][y + 1] : 0) : 0;
-
     return tL + tM + tR + mL + mR + bL + bM + bR;
   };
 
   const testCell = (x: number, y: number, currentVal: number) => {
     let liveNeibhors = countLiveCells(x, y);
     if (currentVal === 1) {
-      if (liveNeibhors < 2 || liveNeibhors > 3) {
-        return 0;
-      }
-      return 1;
+      return liveNeibhors < 2 || liveNeibhors > 3 ? 0 : 1;
     } else if (currentVal === 0) {
-      if (liveNeibhors === 3) {
-        return 1;
-      }
-      return 0;
+      return liveNeibhors === 3 ? 1 : 0;
     }
     return 0;
   };

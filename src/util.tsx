@@ -8,21 +8,18 @@ export const initGrid = (size: number) =>
     );
 
 export const updateUrlHash = (row: number, col: number, live: boolean) => {
-  let hash = JSON.parse(window.location.hash.substring(1));
+  let hash = window.location.hash.substring(1);
   if (!live) {
-    // TODO: check if there is a hasih in, do not add it again
-    hash = [...hash, ...[[row, col]]];
+    hash += `${row}.${col},`;
   } else {
-    var filtered = [...hash].filter(
-      (element: string) =>
-        JSON.stringify(element) !== JSON.stringify([row, col])
+    let filtered = [...hash.split(",")].filter(
+      (element: string) => element !== `${row}.${col}`
     );
-    hash = [...filtered];
+    hash = [...filtered].join(",");
   }
-  window.history.replaceState("pattern", "Title", "/#" + JSON.stringify(hash));
+  window.history.replaceState("pattern", "Title", "/#" + hash);
 };
 
-export const readFromUrlHash = (): number[][] => {
-  let hash = JSON.parse(window.location.hash.substring(1));
-  return [...hash];
+export const readFromUrlHash = (): string[] => {
+  return [...window.location.hash.substring(1).split(",")].filter(Boolean);
 };

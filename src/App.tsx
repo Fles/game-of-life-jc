@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Grid from "./Grid";
 
 import "./App.css";
 
 function App() {
   const [renderImage, setRenderImage] = useState(0);
-
-  useEffect(() => {
-    window.history.pushState(
-      "pattern",
-      "Title",
-      "/#" + window.location.hash.substring(1) || JSON.stringify([])
-    );
-  });
   return (
     <div className="App">
       {renderImage > 0 ? (
