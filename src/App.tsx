@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Grid from "./Grid";
 
 import "./App.css";
+import { resetUrlHash } from "./util";
 
 function App() {
   const [renderImage, setRenderImage] = useState(0);
@@ -12,6 +13,10 @@ function App() {
       ) : (
         <button onClick={() => setRenderImage(renderImage + 1)}>Play</button>
       )}
+      <button onClick={() => {
+        resetUrlHash()
+        setRenderImage(0)
+      }}>Reset url</button>
       <Grid shouldStartRender={renderImage > 0} />
     </div>
   );

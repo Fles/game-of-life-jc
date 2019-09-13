@@ -7,6 +7,10 @@ export const initGrid = (size: number) =>
         .map(() => 0)
     );
 
+export const resetUrlHash = () => {
+  window.history.pushState("pattern", "Title", "/#");
+};
+
 export const updateUrlHash = (row: number, col: number, live: boolean) => {
   let hash = window.location.hash.substring(1);
   if (!live) {
