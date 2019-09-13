@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Cell } from "./Cell";
-import { initGrid, updateUrlHash } from "./util";
+import { initGrid, updateUrlHash, readFromUrlHash } from "./util";
 import { GridProps } from "./types";
 
 let emptyGrid = initGrid(50);
+const updates = readFromUrlHash();
+
+updates.forEach((update: number[]) => {
+  emptyGrid[update[0]][update[1]] = 1;
+});
 
 export const Grid = (props: GridProps) => {
   const [grid, setGrid] = useState(emptyGrid);
@@ -64,12 +69,8 @@ export const Grid = (props: GridProps) => {
   );
 
   useEffect(() => {
-    if (!window.location.hash) {
-      window.history.pushState("pattern", "Title", "/#" + JSON.stringify([]));
-    }
     if (props.shouldStartRender) {
       renderGrid();
-    } else {
     }
   });
 
