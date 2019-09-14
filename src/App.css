@@ -5,8 +5,9 @@
   padding-top: 0px;
 }
 
-.App .Tools {
+.App .TopMenu {
   height: 23px;
+  width:100%;
   padding: 5px;
 }
 
