@@ -62,11 +62,12 @@ export const Grid = (props: GridProps) => {
   );
 
   useEffect(() => {
+    const {speed} = props
     if (props.shouldStartRender) {
 
       const timer = setTimeout(() => {
         renderGrid()
-      }, 42);
+      }, speed === 1 ? 42 : 0)
       return () => clearTimeout(timer);
 
       

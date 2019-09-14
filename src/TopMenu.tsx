@@ -15,17 +15,29 @@ const onReset = (props: TopMenuProps) => {
 
 function TopMenu(props: TopMenuProps) {
   const shouldStartRender = props.renderImage > 0;
+  const { speed, setSpeed } = props;
   return (
     <div className="TopMenu">
-      {shouldStartRender ? (
-        <Button onClick={() => onStop(props)}>Stop ⃞</Button>
-      ) : (
-        <Button onClick={() => onPlay(props)}>Play ▷</Button>
-      )}
+      <div>
+        {shouldStartRender ? (
+          <Button onClick={() => onStop(props)}>Stop ⃞</Button>
+        ) : (
+          <Button onClick={() => onPlay(props)}>Play ▷</Button>
+        )}
 
-      <Button onClick={() => onReload()}>Reload ↻</Button>
+        <Button onClick={() => onReload()}>Reload ↻</Button>
 
-      <Button onClick={() => onReset(props)}>Reset ⓧ</Button>
+        <Button onClick={() => onReset(props)}>Reset ⓧ</Button>
+      </div>
+      <div>
+        <Button
+          onClick={() => {
+            setSpeed(speed === 1 ? 2 : 1);
+          }}
+        >
+          Speed x{speed == 1 ? 2 : 1}
+        </Button>
+      </div>
     </div>
   );
 }

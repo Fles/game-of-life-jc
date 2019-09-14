@@ -1,5 +1,7 @@
+
 export interface GridProps {
   shouldStartRender: boolean;
+  speed: number
 }
 export interface TopMenuProps {
   [key: string]: any

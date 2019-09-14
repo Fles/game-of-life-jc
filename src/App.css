@@ -9,6 +9,9 @@
   height: 23px;
   width:100%;
   padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7em;
 }
 
 .App button {
