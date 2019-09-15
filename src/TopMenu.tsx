@@ -13,6 +13,7 @@ const onReset = (props: TopMenuProps) => {
   props.setRenderImage(0);
 };
 
+
 function TopMenu(props: TopMenuProps) {
   const shouldStartRender = props.renderImage > 0;
   const { speed, setSpeed } = props;
@@ -35,7 +36,7 @@ function TopMenu(props: TopMenuProps) {
             setSpeed(speed === 1 ? 2 : 1);
           }}
         >
-          Speed x{speed == 1 ? 2 : 1}
+          Speed x{speed === 1 ? 2 : 1}
         </Button>
       </div>
     </div>

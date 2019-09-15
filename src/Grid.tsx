@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Cell } from "./Cell";
-import { initGrid, updateUrlHash, readFromUrlHash } from "./util";
+import { initGrid, updateUrlHash, readFromUrlHash, saveSnapshot } from "./util";
 import { GridProps } from "./types";
 
 let emptyGrid = initGrid(50);
@@ -54,7 +54,6 @@ export const Grid = (props: GridProps) => {
         onUpdate={() => {
           const nextGrid = [...grid.map((row: number[]) => [...row])];
           nextGrid[rowIndex][colIndex] = col === 1 ? 0 : 1;
-          updateUrlHash(rowIndex, colIndex, !!col);
           setGrid(nextGrid);
         }}
       />
@@ -64,13 +63,12 @@ export const Grid = (props: GridProps) => {
   useEffect(() => {
     const {speed} = props
     if (props.shouldStartRender) {
-
       const timer = setTimeout(() => {
         renderGrid()
       }, speed === 1 ? 42 : 0)
       return () => clearTimeout(timer);
-
-      
+    } else {
+      updateUrlHash(saveSnapshot(grid))
     }
   });
 

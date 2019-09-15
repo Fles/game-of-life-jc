@@ -11,7 +11,7 @@ export const resetUrlHash = () => {
   window.history.pushState("pattern", "Title", "/#");
 };
 
-export const updateUrlHash = (row: number, col: number, live: boolean) => {
+export const calculateHash = (row: number, col: number, live: boolean) => {
   let hash = window.location.hash.substring(1);
   if (!live) {
     hash += `${row}.${col},`;
@@ -21,9 +21,25 @@ export const updateUrlHash = (row: number, col: number, live: boolean) => {
     );
     hash = [...filtered].join(",");
   }
+  updateUrlHash(hash)
+};
+
+export const updateUrlHash = (hash: string) => {
   window.history.replaceState("pattern", "Title", "/#" + hash);
 };
 
 export const readFromUrlHash = (): string[] => {
   return [...window.location.hash.substring(1).split(",")].filter(Boolean);
+};
+
+export const saveSnapshot = (grid?: any): string => {
+  let res = "";
+  grid.forEach((row: number[], rowIndex: number) => {
+    row.forEach((col: number, colIndex: number) => {
+      if (col !== 0) {
+        res += `${rowIndex}.${colIndex},`;
+      }
+    });
+  });
+  return res
 };
