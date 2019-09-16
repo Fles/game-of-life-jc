@@ -1,8 +1,8 @@
-import React from "react";
+import { MenuProps } from "./MenuTypes";
 import { resetUrlHash } from "../util";
 import Button from "../Button/Button";
-import './Menu.css'
-import { MenuProps } from "./MenuTypes";
+import React from "react";
+import "./Menu.css";
 
 const onStop = (props: MenuProps) => props.setRenderImage(0);
 const onPlay = (props: MenuProps) =>
@@ -14,8 +14,7 @@ const onReset = (props: MenuProps) => {
   props.setRenderImage(0);
 };
 
-
-function Menu(props: MenuProps) {
+const Menu: React.FunctionComponent<MenuProps> = props => {
   const shouldStartRender = props.renderImage > 0;
   const { speed, setSpeed } = props;
   return (
@@ -42,6 +41,6 @@ function Menu(props: MenuProps) {
       </div>
     </div>
   );
-}
+};
 
 export { Menu };
