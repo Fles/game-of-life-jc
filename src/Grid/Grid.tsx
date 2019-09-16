@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Cell } from "./Cell";
-import { initGrid, updateUrlHash, readFromUrlHash, saveSnapshot } from "./util";
-import { GridProps } from "./types";
+import { Cell } from "../Cell/Cell";
+import { initGrid, updateUrlHash, readFromUrlHash, saveSnapshot } from "../util";
+import "./Grid.css";
+import { GridProps } from "./GridTypes";
 
 let emptyGrid = initGrid(50);
 const updates = readFromUrlHash();
@@ -11,7 +12,7 @@ updates.forEach((update: string) => {
   emptyGrid[row][col] = 1;
 });
 
-export const Grid = (props: GridProps) => {
+const Grid = (props: GridProps) => {
   const [grid, setGrid] = useState(emptyGrid);
   const countLiveCells = (x: number, y: number): number => {
     const tL = grid[x - 1] ? (grid[y - 1] ? grid[x - 1][y - 1] : 0) : 0;
@@ -74,4 +75,4 @@ export const Grid = (props: GridProps) => {
 
   return <div className="Grid">{cells}</div>;
 };
-export default Grid;
+export { Grid };

@@ -1,11 +1,12 @@
 import React from "react";
-import { ButtonProps } from "./types";
+import './Button.css'
+import { ButtonProps } from "./ButtonTypes";
 
 function Button(props: ButtonProps) {
   const { onClick, children } = props;
 
   return (
-    <button onClick={onClick}>
+    <button className="Button" onClick={onClick}>
       {children}
     </button>
   );

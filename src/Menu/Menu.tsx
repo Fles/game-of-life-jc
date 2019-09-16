@@ -1,24 +1,25 @@
 import React from "react";
-import { resetUrlHash } from "./util";
-import Button from "./Button";
-import { TopMenuProps } from "./types";
+import { resetUrlHash } from "../util";
+import Button from "../Button/Button";
+import './Menu.css'
+import { MenuProps } from "./MenuTypes";
 
-const onStop = (props: TopMenuProps) => props.setRenderImage(0);
-const onPlay = (props: TopMenuProps) =>
+const onStop = (props: MenuProps) => props.setRenderImage(0);
+const onPlay = (props: MenuProps) =>
   props.setRenderImage(props.renderImage + 1);
 const onReload = () => window.location.reload();
-const onReset = (props: TopMenuProps) => {
+const onReset = (props: MenuProps) => {
   resetUrlHash();
   window.location.reload();
   props.setRenderImage(0);
 };
 
 
-function TopMenu(props: TopMenuProps) {
+function Menu(props: MenuProps) {
   const shouldStartRender = props.renderImage > 0;
   const { speed, setSpeed } = props;
   return (
-    <div className="TopMenu">
+    <div className="Menu">
       <div>
         {shouldStartRender ? (
           <Button onClick={() => onStop(props)}>Stop ⃞</Button>
@@ -43,4 +44,4 @@ function TopMenu(props: TopMenuProps) {
   );
 }
 
-export { TopMenu };
+export { Menu };

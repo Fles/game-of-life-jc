@@ -1,0 +1,9 @@
+.Cell {
+  background: rgb(192, 192, 192);
+  cursor: pointer;
+}
+
+.Cell.alive {
+  background: white;
+}
+

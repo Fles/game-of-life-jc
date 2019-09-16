@@ -1,4 +1,5 @@
 import React from "react";
+import "./Cell.css";
 
 export interface CellProps {
   className?: string;
@@ -9,6 +10,8 @@ export interface CellProps {
   onUpdate: () => void
 }
 
-export const Cell = (props: CellProps) => (
-  <div className={`${props.isAlive ? "alive" : ""}`} onClick={props.onUpdate}/>
+const Cell = (props: CellProps) => (
+  <div className={`Cell ${props.isAlive ? "alive" : ""}`} onClick={props.onUpdate}/>
 );
+
+export { Cell }
