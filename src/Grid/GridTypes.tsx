@@ -1,4 +1,5 @@
 export interface GridProps {
   shouldStartRender: boolean;
-  speed: number
+  speed: number;
+  player: string;
 }

@@ -1,6 +1,6 @@
 export interface CellProps {
-  isAlive: boolean;
   posx: number;
   posy: number;
-  onUpdate: () => void
+  onUpdate: () => void;
+  className: string
 }

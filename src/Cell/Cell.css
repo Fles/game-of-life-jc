@@ -7,3 +7,10 @@
   background: white;
 }
 
+.Cell.alive.black {
+  background: rgb(192, 192, 192);
+}
+
+.Cell.white {
+  background: white;
+}
