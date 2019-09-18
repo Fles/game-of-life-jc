@@ -17,8 +17,6 @@ updates.forEach((update: string) => {
   emptyGrid[row][col] = 1;
 });
 
-
-
 const Grid: React.FunctionComponent<GridProps> = props => {
   const [grid, setGrid] = useState(emptyGrid);
   const countLiveCells = (x: number, y: number): number => {
@@ -55,12 +53,7 @@ const Grid: React.FunctionComponent<GridProps> = props => {
   const cells = grid.map((row: number[], rowIndex: number) =>
     row.map((col: number, colIndex: number) => (
       <Cell
-      className={
-        `${!!col ? " alive" : ''}${
-          !!col ? ' ' + props.player : ''
-        }`
-      }
-        
+        className={`${!!col ? " alive" : ""}${!!col ? " " + props.player : ""}`}
         key={`${rowIndex}${colIndex}`}
         posx={rowIndex}
         posy={colIndex}
@@ -74,9 +67,8 @@ const Grid: React.FunctionComponent<GridProps> = props => {
   );
 
   useEffect(() => {
-    console.log('from griud')
     const { speed } = props;
-    
+
     if (props.shouldStartRender) {
       const timer = setTimeout(
         () => {
