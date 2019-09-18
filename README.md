@@ -1,5 +1,7 @@
 Inspired by [John Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) 
 
+[Demo](https://build-78guqr1yf.now.sh/#)
+
 Rules:
 
 - Any live cell with fewer than two live neighbours dies, as if by underpopulation.
@@ -7,4 +9,4 @@ Rules:
 - Any live cell with more than three live neighbours dies, as if by overpopulation.
 - Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
-[Demo](https://build-78guqr1yf.now.sh/#)
+The rules continue to be applied repeatedly to create further generations.
