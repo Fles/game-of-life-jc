@@ -6,3 +6,21 @@
   justify-content: space-between;
   font-size: 0.7em;
 }
+
+.Player {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid lightgray;
+  margin: 5px;
+}
+
+.Player.black {
+  background: rgb(192, 192, 192);
+}
+.Player.white {
+  background: white;
+}
+.Player.selected {
+  border: 2px dashed #555;
+}
