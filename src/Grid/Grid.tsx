@@ -68,10 +68,15 @@ const Grid: React.FunctionComponent<GridProps> = props => {
 
   useEffect(() => {
     const { speed } = props;
-
     if (props.shouldStartRender) {
       const timer = setTimeout(
         () => {
+          // @ts-ignore
+          document.querySelector(".blackCounter").innerHTML =
+            document.querySelectorAll(".black").length - 1;
+          // @ts-ignore
+          document.querySelector(".whiteCounter").innerHTML =
+            document.querySelectorAll(".white").length - 1;
           renderGrid();
         },
         speed === 1 ? 42 : 0

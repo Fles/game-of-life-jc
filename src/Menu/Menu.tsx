@@ -31,14 +31,24 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
 
         <Button onClick={() => onReset(props)}>Reset ⓧ</Button>
       </div>
-      <div
-        onClick={() => setPlayer("black")}
-        className={`Player black${props.player === "black" ? " selected" : ""}`}
-      ></div>
-      <div
-        onClick={() => setPlayer("white")}
-        className={`Player white${props.player === "white" ? " selected" : ""}`}
-      ></div>
+      <div>
+        <div
+          onClick={() => setPlayer("black")}
+          className={`Player black${
+            props.player === "black" ? " selected" : ""
+          }`}
+        ></div>
+        <span className="blackCounter">0</span>
+      </div>
+      <div>
+        <div
+          onClick={() => setPlayer("white")}
+          className={`Player white${
+            props.player === "white" ? " selected" : ""
+          }`}
+        ></div>
+        <span className="whiteCounter">0</span>
+      </div>
       <div>
         <Button
           onClick={() => {
