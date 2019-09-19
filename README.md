@@ -1,6 +1,11 @@
 Inspired by [John Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) - [Demo](https://build-78guqr1yf.now.sh/#)
 
-Rules:
+2 players: black & white
+
+- every player place 4 part box shape on board
+- press play
+
+Rules or generations:
 
 - Any live cell with fewer than two live neighbours dies, as if by underpopulation.
 - Any live cell with two or three live neighbours lives on to the next generation.
