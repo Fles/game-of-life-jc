@@ -17,8 +17,12 @@ updates.forEach((update: string) => {
   emptyGrid[row][col] = 1;
 });
 
+function isOdd(num:number):boolean { return num % 2 === 1; }
+
 const Grid: React.FunctionComponent<GridProps> = props => {
   const [grid, setGrid] = useState(emptyGrid);
+  const [numberOfClicks, setNumberOfClicks] = useState(0);
+
   const countLiveCells = (x: number, y: number): number => {
     const tL = grid[x - 1] ? (grid[y - 1] ? grid[x - 1][y - 1] : 0) : 0;
     const tM = grid[x - 1] ? grid[x - 1][y] : 0;
@@ -60,15 +64,20 @@ const Grid: React.FunctionComponent<GridProps> = props => {
         onUpdate={() => {
           const nextGrid = [...grid.map((row: number[]) => [...row])];
           nextGrid[rowIndex][colIndex] = col === 1 ? 0 : 1;
+          setNumberOfClicks(() => numberOfClicks + 1)
           setGrid(nextGrid);
         }}
       />
     ))
   );
 
+
+  
   useEffect(() => {
     const { speed } = props;
+
     if (props.shouldStartRender) {
+
       const timer = setTimeout(
         () => {
           // @ts-ignore
@@ -83,8 +92,16 @@ const Grid: React.FunctionComponent<GridProps> = props => {
       );
       return () => clearTimeout(timer);
     } else {
+      if (isOdd(numberOfClicks)) {
+        props.setPlayer('white')
+      } else {
+        props.setPlayer("black")
+      }
       updateUrlHash(saveSnapshot(grid));
     }
+
+
+
   });
 
   return <div className="Grid">{cells}</div>;

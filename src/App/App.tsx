@@ -21,6 +21,7 @@ function App() {
       <Grid
         renderImage={renderImage}
         player={player}
+        setPlayer={setPlayer}
         shouldStartRender={renderImage > 0}
         speed={speed}
       />
