@@ -1,5 +1,3 @@
-Inspired by [John Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
-
 [Demo](https://build-4xzyqepdw.now.sh/#)
 
 2 players: black & white
@@ -15,3 +13,5 @@ Rules or generations:
 - Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 The rules continue to be applied repeatedly to create further generations.
+
+Inspired by [John Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
