@@ -1,10 +1,5 @@
 [Demo](https://build-4xzyqepdw.now.sh/#)
 
-2 players: black & white
-
-- every player place 4 part box shape on board
-- press play
-
 Rules or generations:
 
 - Any live cell with fewer than two live neighbours dies, as if by underpopulation.
