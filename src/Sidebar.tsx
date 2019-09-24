@@ -10,9 +10,18 @@ interface SidebarProps {
 
 const Sidebar: React.FunctionComponent<SidebarProps> = React.memo(props => {
   return (
-    <ul style={{ position: "absolute", right: 60, top: 0 }}>
+    <ul
+      style={{
+        position: "absolute",
+        right: 150,
+        top: 0,
+        listStyleType: "none",
+        fontFamily: '"Courier New", Courier, monospace'
+      }}
+    >
       {props.snapshots.map((snapshot: any, i: number) => (
         <li
+          style={{ margin: 5, cursor: "pointer", border: "1px solid #777", padding: 5, borderRadius: 5, borderLeft: "2px solid #555" }}
           key={i}
           onClick={() => {
             updateUrlHash(snapshot);
