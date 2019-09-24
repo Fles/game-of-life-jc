@@ -7,6 +7,18 @@ export const initGrid = (size: number) =>
         .map(() => 0)
     );
 
+export const URLGrid = (size: number) => {
+  let grid = initGrid(size);
+  const urlUpdates = readFromUrlHash();
+  
+  urlUpdates.forEach((update: string) => {
+    const row = +update.split(".")[0];
+    const col = +update.split(".")[1];
+    grid[row][col] = 1;
+  });
+  return grid
+}
+
 export const resetUrlHash = () => {
   window.history.pushState("pattern", "Title", "/#");
 };

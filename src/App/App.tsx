@@ -2,21 +2,13 @@ import React, { useState } from "react";
 import { Menu } from "../Menu";
 import { Grid } from "../Grid";
 import "./App.css";
-import { initGrid, readFromUrlHash } from "../util";
+import { URLGrid } from "../util";
 import { Sidebar } from "Sidebar";
 
-let emptyGrid = initGrid(50);
-
-const urlUpdates = readFromUrlHash();
-urlUpdates.forEach((update: string) => {
-  const row = +update.split(".")[0];
-  const col = +update.split(".")[1];
-  emptyGrid[row][col] = 1;
-});
+const urlGrid = URLGrid(50);
 
 function App() {
-  const [grid, setGrid] = useState(emptyGrid);
-
+  const [grid, setGrid] = useState(urlGrid);
   const [renderImage, setRenderImage] = useState(0);
   const [speed, setSpeed] = useState(1);
   const [snapshots, setSnapshots] = useState([[]]);
@@ -42,8 +34,7 @@ function App() {
         shouldStartRender={renderImage > 0}
         speed={speed}
       />
-
-      <Sidebar grid={grid} snapshots={snapshots}/>
+      <Sidebar setGrid={setGrid} grid={grid} snapshots={snapshots} />
     </div>
   );
 }
