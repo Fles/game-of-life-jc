@@ -2,10 +2,12 @@ import { MenuProps } from "./MenuTypes";
 import Button from "../Button/Button";
 import React from "react";
 import "./Menu.css";
+import { convertGridToString } from "../util";
 
 const onStop = (props: MenuProps) => props.setRenderImage(0);
 const onPlay = (props: MenuProps) =>
   props.setRenderImage(props.renderImage + 1);
+const onSaveSnapshot = (props: MenuProps) => props.setSnapshot(convertGridToString(props.grid))
 
 const Menu: React.FunctionComponent<MenuProps> = props => {
   const shouldStartRender = props.renderImage > 0;
@@ -19,6 +21,7 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
         ) : (
           <Button onClick={() => onPlay(props)}>Play ▷</Button>
         )}
+        <Button onClick={() => onSaveSnapshot(props)}>Snapshot</Button>
       </div>
       <div>
         <Button

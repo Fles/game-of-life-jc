@@ -32,7 +32,7 @@ export const readFromUrlHash = (): string[] => {
   return [...window.location.hash.substring(1).split(",")].filter(Boolean);
 };
 
-export const saveSnapshot = (grid?: any): string => {
+export const convertGridToString = (grid?: any): string => {
   let res = "";
   grid.forEach((row: number[], rowIndex: number) => {
     row.forEach((col: number, colIndex: number) => {

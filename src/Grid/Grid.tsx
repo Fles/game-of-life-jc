@@ -1,24 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Cell } from "../Cell/Cell";
-import {
-  initGrid,
-  updateUrlHash,
-  readFromUrlHash,
-  saveSnapshot
-} from "../util";
+import { updateUrlHash, convertGridToString } from "../util";
 import "./Grid.css";
 import { GridProps } from "./GridTypes";
 
-let emptyGrid = initGrid(50);
-const updates = readFromUrlHash();
-updates.forEach((update: string) => {
-  const row = +update.split(".")[0];
-  const col = +update.split(".")[1];
-  emptyGrid[row][col] = 1;
-});
-
 const Grid: React.FunctionComponent<GridProps> = props => {
-  const [grid, setGrid] = useState(emptyGrid);
+  const { grid, setGrid } = props;
   const countLiveCells = (x: number, y: number): number => {
     const tL = grid[x - 1] ? (grid[y - 1] ? grid[x - 1][y - 1] : 0) : 0;
     const tM = grid[x - 1] ? grid[x - 1][y] : 0;
@@ -77,7 +64,7 @@ const Grid: React.FunctionComponent<GridProps> = props => {
       );
       return () => clearTimeout(timer);
     } else {
-      updateUrlHash(saveSnapshot(grid));
+      updateUrlHash(convertGridToString(grid));
     }
   });
 
