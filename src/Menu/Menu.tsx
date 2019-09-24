@@ -1,5 +1,4 @@
 import { MenuProps } from "./MenuTypes";
-import { resetUrlHash } from "../util";
 import Button from "../Button/Button";
 import React from "react";
 import "./Menu.css";
@@ -7,16 +6,10 @@ import "./Menu.css";
 const onStop = (props: MenuProps) => props.setRenderImage(0);
 const onPlay = (props: MenuProps) =>
   props.setRenderImage(props.renderImage + 1);
-const onReload = () => window.location.reload();
-const onReset = (props: MenuProps) => {
-  resetUrlHash();
-  window.location.reload();
-  props.setRenderImage(0);
-};
 
 const Menu: React.FunctionComponent<MenuProps> = props => {
   const shouldStartRender = props.renderImage > 0;
-  const { speed, setSpeed, setPlayer } = props;
+  const { speed, setSpeed } = props;
 
   return (
     <div className="Menu">
@@ -26,28 +19,6 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
         ) : (
           <Button onClick={() => onPlay(props)}>Play ▷</Button>
         )}
-
-        <Button onClick={() => onReload()}>Reload ↻</Button>
-
-        <Button onClick={() => onReset(props)}>Reset ⓧ</Button>
-      </div>
-      <div>
-        <div
-          onClick={() => setPlayer("black")}
-          className={`Player black${
-            props.player === "black" ? " selected" : ""
-          }`}
-        ></div>
-        <span className="blackCounter">0</span>
-      </div>
-      <div>
-        <div
-          onClick={() => setPlayer("white")}
-          className={`Player white${
-            props.player === "white" ? " selected" : ""
-          }`}
-        ></div>
-        <span className="whiteCounter">0</span>
       </div>
       <div>
         <Button

@@ -6,21 +6,17 @@ import "./App.css";
 function App() {
   const [renderImage, setRenderImage] = useState(0);
   const [speed, setSpeed] = useState(1);
-  const [player, setPlayer] = useState("black");
 
   return (
     <div className="App">
       <Menu
-        setPlayer={setPlayer}
         renderImage={renderImage}
-        player={player}
         setRenderImage={setRenderImage}
         speed={speed}
         setSpeed={setSpeed}
       />
       <Grid
         renderImage={renderImage}
-        player={player}
         shouldStartRender={renderImage > 0}
         speed={speed}
       />
