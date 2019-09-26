@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Menu } from "../Menu";
 import { Grid } from "../Grid";
 import "./App.css";
-import { URLGrid } from "../util";
+import { URLGrid, convertGridToString } from "../util";
 import { Sidebar } from "Sidebar";
 
 const urlGrid = URLGrid(50);
@@ -11,11 +11,13 @@ function App() {
   const [grid, setGrid] = useState(urlGrid);
   const [renderImage, setRenderImage] = useState(0);
   const [speed, setSpeed] = useState(1);
-  const [snapshots, setSnapshots] = useState([[]]);
+
+  const [snapshots, setSnapshots] = useState([convertGridToString(grid)]);
 
   const setSnapshot = (snapshot: any) => {
     setSnapshots((snapshots: any) => [...snapshots, snapshot]);
   };
+  console.log(renderImage)
 
   return (
     <div className="App">

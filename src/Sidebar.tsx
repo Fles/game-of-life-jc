@@ -16,7 +16,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = React.memo(props => {
         right: 150,
         top: 0,
         listStyleType: "none",
-        fontFamily: '"Courier New", Courier, monospace'
+        fontSize: ".8em"
       }}
     >
       {props.snapshots.map((snapshot: any, i: number) => (

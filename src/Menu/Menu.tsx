@@ -17,11 +17,11 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
     <div className="Menu">
       <div>
         {shouldStartRender ? (
-          <Button onClick={() => onStop(props)}>Stop ⃞</Button>
+          <Button onClick={() => onStop(props)}>Stop</Button>
         ) : (
-          <Button onClick={() => onPlay(props)}>Play ▷</Button>
+          <Button onClick={() => onPlay(props)}>Play</Button>
         )}
-        <Button onClick={() => onSaveSnapshot(props)}>Snapshot</Button>
+        <Button onClick={() => onSaveSnapshot(props)}>Save</Button>
       </div>
       <div>
         <Button
@@ -29,7 +29,7 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
             setSpeed(speed === 1 ? 2 : 1);
           }}
         >
-          Speed x{speed === 1 ? 2 : 1}
+          Speed {speed === 1 ? 2 : 1}
         </Button>
       </div>
     </div>
