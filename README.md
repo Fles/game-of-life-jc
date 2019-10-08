@@ -1,3 +1,5 @@
+## Game of Life
+
 Rendering generations based on 4 rules for every cell:
 
 - Any live cell with fewer than two live neighbours dies, as if by underpopulation.
