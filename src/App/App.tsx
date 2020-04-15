@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Menu } from "../Menu";
 import { Grid } from "../Grid";
 import "./App.css";
-import "./music";
+//import "./music";
 
 function App() {
   const [renderImage, setRenderImage] = useState(0);

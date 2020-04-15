@@ -4,7 +4,7 @@ import {
   initGrid,
   updateUrlHash,
   readFromUrlHash,
-  saveSnapshot
+  saveSnapshot,
 } from "../util";
 import "./Grid.css";
 import { GridProps } from "./GridTypes";
@@ -17,7 +17,7 @@ updates.forEach((update: string) => {
   emptyGrid[row][col] = 1;
 });
 
-const Grid: React.FunctionComponent<GridProps> = props => {
+const Grid: React.FunctionComponent<GridProps> = (props) => {
   const [grid, setGrid] = useState(emptyGrid);
   const countLiveCells = (x: number, y: number): number => {
     const tL = grid[x - 1] ? (grid[y - 1] ? grid[x - 1][y - 1] : 0) : 0;
@@ -72,11 +72,11 @@ const Grid: React.FunctionComponent<GridProps> = props => {
       const timer = setTimeout(
         () => {
           // @ts-ignore
-          document.querySelector(".blackCounter").innerHTML =
-            document.querySelectorAll(".black").length - 1;
+          //document.querySelector(".blackCounter").innerHTML =
+          //document.querySelectorAll(".black").length - 1;
           // @ts-ignore
-          document.querySelector(".whiteCounter").innerHTML =
-            document.querySelectorAll(".white").length - 1;
+          //document.querySelector(".whiteCounter").innerHTML =
+          //document.querySelectorAll(".white").length - 1;
           renderGrid();
         },
         speed === 1 ? 42 : 0

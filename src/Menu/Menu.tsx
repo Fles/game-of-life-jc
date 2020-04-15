@@ -14,7 +14,7 @@ const onReset = (props: MenuProps) => {
   props.setRenderImage(0);
 };
 
-const Menu: React.FunctionComponent<MenuProps> = props => {
+const Menu: React.FunctionComponent<MenuProps> = (props) => {
   const shouldStartRender = props.renderImage > 0;
   const { speed, setSpeed, setPlayer } = props;
 
@@ -31,7 +31,7 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
 
         <Button onClick={() => onReset(props)}>Reset ⓧ</Button>
       </div>
-      <div>
+      {/*<div>
         <div
           onClick={() => setPlayer("black")}
           className={`Player black${
@@ -48,7 +48,7 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
           }`}
         ></div>
         <span className="whiteCounter">0</span>
-      </div>
+        </div>*/}
       <div>
         <Button
           onClick={() => {
