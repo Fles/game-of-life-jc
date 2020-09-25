@@ -16,7 +16,7 @@ const onReset = (props: MenuProps) => {
 
 const Menu: React.FunctionComponent<MenuProps> = (props) => {
   const shouldStartRender = props.renderImage > 0;
-  const { speed, setSpeed, setPlayer } = props;
+  const { speed, setSpeed /* , setPlayer */ } = props;
 
   return (
     <div className="Menu">
