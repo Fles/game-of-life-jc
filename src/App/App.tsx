@@ -11,6 +11,12 @@ function App() {
 
   return (
     <div className="App">
+      <Grid
+        renderImage={renderImage}
+        player={player}
+        shouldStartRender={renderImage > 0}
+        speed={speed}
+      />
       <Menu
         setPlayer={setPlayer}
         renderImage={renderImage}
@@ -18,12 +24,6 @@ function App() {
         setRenderImage={setRenderImage}
         speed={speed}
         setSpeed={setSpeed}
-      />
-      <Grid
-        renderImage={renderImage}
-        player={player}
-        shouldStartRender={renderImage > 0}
-        speed={speed}
       />
     </div>
   );
