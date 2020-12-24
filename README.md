@@ -8,4 +8,4 @@
 
 Inspired by [John Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 
-[Demo](https://game-of-life-jc.vercel.app/#21.24,23.23,23.24,23.25,24.19,24.21,24.24,24.27,24.29,25.18,25.19,25.22,25.26,25.29,25.30,26.19,26.21,26.24,26.27,26.29,27.23,27.24,27.25,29.24,)
+[Demo](https://game-of-life-jc.vercel.app/#22.24,23.23,23.25,24.23,24.25,25.22,25.26,)
